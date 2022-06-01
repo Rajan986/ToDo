@@ -1,0 +1,40 @@
+//- doctype html
+//- head
+//-   meta(charset='UTF-8')
+//-   meta(http-equiv='X-UA-Compatible' content='IE=edge')
+//-   meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-   title Todo Lists
+//-   link(rel='stylesheet' href='/css/style.css')
+//-   //- script(src='/js/index.js')
+extends base.pug
+block content
+  header
+    h1 Todo Lists
+    form#new-task-form.task__form
+      input#new-task-name(type='text' name='new-task-name' placeholder='Your task name')
+      input#new-task-input(type='text' name='new-task-input' placeholder='Type here to add new task')
+      input#new-task-submit(type='submit' value='Add task')
+  main
+    section.task-list
+      h2 Tasks
+      .task-status
+        //- span#all()  All 
+        button
+          a#all_tasks All tasks
+        button
+          a#pending.task__status(data-complete=`${false}`) Pending
+        button
+          a#completed.task__status(data-complete=`${true}`) Completed
+        //- span#completed  Completed 
+      #tasks
+        each task in tasks 
+          .task
+            .content 
+              //- input.text(type='text' value=`${task.name}: ${task.shortDescription}`)
+              p(id=`${task._id}`)=`${task.name}: ${task.shortDescription}`
+            .actions 
+              a.edit(href=`/edit-task/${task._id}` data-taskId=`${task._id}`) Edit
+              a#done_button.done(data-Id=`${task._id}`) Done   
+
+
+

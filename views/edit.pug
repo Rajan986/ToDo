@@ -1,0 +1,8 @@
+extends base.pug
+block content 
+    header
+    h1 Todo Lists
+    form#new-task-form.task__form
+      input#new-task-name.new-task__name(type='text' name='new-task-name' value=`${task.name}`)
+      input#new-task-input.new-task__input(type='text' name='new-task-input' value=`${task.shortDescription}`)
+      input#new-task-submit.task-submit__update(type='submit' value='Update Task' )
